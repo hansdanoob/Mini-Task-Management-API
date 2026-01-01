@@ -1,4 +1,4 @@
-package main.java.com.task.api.task_api;
+package com.task.api.task_api;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Task {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // automatically generates id when new Task object is created
     private Long id;
@@ -17,8 +17,7 @@ public class Task {
     private String title;
     private String description;
     private LocalDateTime createdAt;
-
-    private Status status = Status.TODO; // enum storing: TODO - IN_PROGRESS - DONE
+    private String status = "TODO"; // TODO - IN_PROGRESS - DONE
 
 
     // Constructors
@@ -26,13 +25,8 @@ public class Task {
     }
 
     public Task(String title, String description) {
-        Task(title, description, "TODO");   // default status is "TODO"
-    }
-
-    public Task(String title, String description, String status) {
         this.title = title;
         this.description = description;
-        this.status = status;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -74,7 +68,7 @@ public class Task {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) { // not necessary?
+    public void setCreatedAt(LocalDateTime createdAt) { // not necessary?
         this.createdAt = createdAt;
     }
 }
